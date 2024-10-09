@@ -12,10 +12,13 @@ import org.springframework.web.socket.messaging.SessionDisconnectEvent;
 
 @Component
 @Slf4j
-@RequiredArgsConstructor
 public class WebSocketEventListener {
 
     private final SimpMessageSendingOperations messagingTemplate;
+
+    public WebSocketEventListener(SimpMessageSendingOperations messagingTemplate) {
+        this.messagingTemplate = messagingTemplate;
+    }
 
     @EventListener
     public void handleWebSocketDisconnectListener(SessionDisconnectEvent event) {
